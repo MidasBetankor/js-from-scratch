@@ -1,0 +1,20 @@
+{
+  "name": "tutorial",
+  "version": "1.0.0",
+  "description": "Entire JS stack tutorial following the verekia guidelines",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MidasBetankor/js-from-scratch.git"
+  },
+  "author": "Bo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MidasBetankor/js-from-scratch/issues"
+  },
+  "homepage": "https://github.com/MidasBetankor/js-from-scratch#readme"
+}
