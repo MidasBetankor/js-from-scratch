@@ -14,9 +14,17 @@ const filter = (data, predicate) => {
   return result
 }
 
+
+const chain = (...fns) => 
+	(num) => fns.reduce(
+		(num, f) => f(num),
+		num
+		)
+
 module.exports = {
   log: print,
   scream: capitalize,
   push: push,
-  filter: filter
+  filter: filter,
+  chain: chain
 }
