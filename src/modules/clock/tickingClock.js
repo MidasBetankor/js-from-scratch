@@ -10,40 +10,35 @@ const toObject = time => ({
 	ampm: 'AM'
 })
 
-const formatTime = time => {
-	let formattedTime = Object.assign(time)
-	formattedTime.ampm =
-		(formattedTime.hours < 12)
-		? "AM"
-		: "PM"
-	formattedTime.seconds = 
-		(formattedTime.seconds < 10)
-		? '0' + formattedTime.seconds
-		: formattedTime.seconds
-	formattedTime.minutes = 
-		(formattedTime.minutes < 10)
-		? '0' + formattedTime.minutes
-		: formattedTime.minutes
-	formattedTime.hours = 
-		(formattedTime.hours < 10)
-		? '0' + formattedTime.hours
-		: formattedTime.hours
-	formattedTime.hours = 
-		(formattedTime.hours > 12)
-		? (formattedTime.hours - 12)
-		: formattedTime.hours
-	return "hh:mm:ss dd"
-		.replace("hh", formattedTime.hours)
-		.replace("mm", formattedTime.minutes)
-		.replace("ss", formattedTime.seconds)
-		.replace("dd", formattedTime.ampm)
-}
+const ampm = time => (
+	Object.assign(time, { ampm: (time.hours < 12) ? "AM" : "PM" })
+)
 
-showTime = () => {
+const civilianHours = time => (
+	Object.assign(time, { hours: (time.hours > 12) ? (time.hours - 12) : time.hours }
+))
+
+const appendZeroes = time => (
+	Object.assign(time, {
+		seconds: (time.seconds < 10) ? ('0' + time.seconds) : time.seconds,
+		minutes: (time.minutes < 10) ? ('0' + time.minutes) : time.minutes,
+		hours: (time.hours < 10) ? ('0' + time.hours) : time.hours
+	}))
+
+const formatTime = time =>
+	"hh:mm:ss dd"
+		.replace("hh", time.hours)
+		.replace("mm", time.minutes)
+		.replace("ss", time.seconds)
+		.replace("dd", time.ampm)
+
+const showTime = () => {
 	utilities.chain(
 		clearScreen,
 		getCurrentTime,
 		toObject,
+		ampm,
+		appendZeroes,
 		formatTime,
 		console.log
 	)(getCurrentTime())
