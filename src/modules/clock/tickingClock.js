@@ -10,20 +10,18 @@ const toObject = time => ({
 	ampm: 'AM'
 })
 
-const ampm = time => (
+const ampm = time =>
 	Object.assign(time, { ampm: (time.hours < 12) ? "AM" : "PM" })
-)
 
-const civilianHours = time => (
-	Object.assign(time, { hours: (time.hours > 12) ? (time.hours - 12) : time.hours }
-))
 
-const appendZeroes = time => (
+const civilianHours = time =>
+	Object.assign(time, { hours: (time.hours > 12) ? (time.hours - 12) : time.hours })
+
+const appendZeroes = time =>
 	Object.assign(time, {
 		seconds: (time.seconds < 10) ? ('0' + time.seconds) : time.seconds,
 		minutes: (time.minutes < 10) ? ('0' + time.minutes) : time.minutes,
-		hours: (time.hours < 10) ? ('0' + time.hours) : time.hours
-	}))
+		hours: (time.hours < 10) ? ('0' + time.hours) : time.hours })
 
 const formatTime = time =>
 	"hh:mm:ss dd"
@@ -32,7 +30,7 @@ const formatTime = time =>
 		.replace("ss", time.seconds)
 		.replace("dd", time.ampm)
 
-const showTime = () => {
+const showTime = () =>
 	utilities.chain(
 		clearScreen,
 		getCurrentTime,
@@ -42,7 +40,6 @@ const showTime = () => {
 		formatTime,
 		console.log
 	)(getCurrentTime())
-}
 
 module.exports = {
 	showTime: showTime,
