@@ -2,12 +2,11 @@ import React from 'react'
 import { render } from 'react-dom'
 import Menu from './modules/Menu'
 import data from './data/recipes'
-
-console.log(data)
+import AddColorForm from './modules/AddColorForm'
 
 window.React = React
 
 render(
-    <Menu recipes={data} />,
+    <AddColorForm />,
     document.getElementById("react-container")
 )
