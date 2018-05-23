@@ -1,12 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Menu from './modules/Menu'
 import data from './data/recipes'
-import AddColorForm from './modules/AddColorForm'
-
-window.React = React
+import App from './modules/colour-organizer/App'
 
 render(
-    <AddColorForm />,
+    <App />,
     document.getElementById("react-container")
 )
