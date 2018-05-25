@@ -1,9 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import data from './data/recipes'
-import App from './modules/colour-organizer/App'
+import MemberList from './Chapter\ 7/MemberList'
 
 render(
-    <App />,
+    <MemberList />,
     document.getElementById("react-container")
 )
